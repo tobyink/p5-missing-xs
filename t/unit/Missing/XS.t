@@ -20,15 +20,19 @@ the same terms as the Perl 5 programming language system itself.
 
 =cut
 
+BEGIN {
+	$ENV{PERL_MISSING_XS_NO_END} = 1;
+};
+
 use Test2::V0 -target => 'Missing::XS';
 use Test2::Tools::Spec;
 use Data::Dumper;
 
 describe "class `$CLASS`" => sub {
-
-	tests 'blah blah blah' => sub {
-	
-		pass;
+	tests 'basic_check' => sub {
+		my $rand = sprintf( 'Dummy%06d', int rand( 1_000_000 ) );
+		ok !$CLASS->basic_check( $CLASS, "$CLASS\::Module::Does::Not::Exist::$rand\::Sorry1" );
+		ok $CLASS->basic_check( "$CLASS\::Module::Does::Not::Exist::$rand\::Sorry2", "$CLASS\::Module::Does::Not::Exist::$rand\::Sorry3" );
 	};
 };
 

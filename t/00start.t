@@ -23,7 +23,7 @@ the same terms as the Perl 5 programming language system itself.
 use Test2::V0;
 
 my @modules = qw(
-	Carp
+	Module::Runtime
 	Test2::V0
 );
 

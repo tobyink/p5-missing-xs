@@ -20,6 +20,10 @@ the same terms as the Perl 5 programming language system itself.
 
 =cut
 
+BEGIN {
+	$ENV{PERL_MISSING_XS_NO_END} = 1;
+};
+
 use Test2::V0;
 use Test2::Plugin::BailOnFail;
 
