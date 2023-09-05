@@ -19,31 +19,39 @@ sub import {
 }
 
 our @CHECKS = (
+	sub { shift->basic_check_or_warning( 'Class::C3' ) },
 	sub { shift->basic_check_or_warning( 'Class::Load' ) },
+	sub { shift->basic_check_or_warning( 'Date::Calc' ) },
+	sub { shift->basic_check_or_warning( 'Directory::Iterator' ) },
+	sub { shift->basic_check_or_warning( 'Heap::Simple' ) },
 	sub { shift->basic_check_or_warning( 'JSON' ) },
 	sub { shift->basic_check_or_warning( 'JSON::MaybeXS', 'Cpanel::JSON::XS' ) },
 	sub { shift->basic_check_or_warning( 'List::MoreUtils' ) },
 	sub { shift->basic_check_or_warning( 'List::SomeUtils' ) },
 	sub { shift->basic_check_or_warning( 'match::simple' ) },
 	sub { shift->basic_check_or_warning( 'Moo', 'Class::XSAccessor' ) },
-	sub { shift->basic_check_or_warning( 'Object::Accessor' ) },
-	sub { shift->basic_check_or_warning( 'Object::Adhoc', 'Class::XSAccessor' ) },
-	sub { shift->basic_check_or_warning( 'Package::Stash' ) },
-	sub { shift->basic_check_or_warning( 'PerlX::ArraySkip' ) },
-	sub { shift->basic_check_or_warning( 'PerlX::Maybe' ) },
-	sub { shift->basic_check_or_warning( 'PPI' ) },
-	sub { shift->basic_check_or_warning( 'Readonly' ) },
-	sub { shift->basic_check_or_warning( 'Ref::Util' ) },
-	sub { shift->basic_check_or_warning( 'String::Numeric' ) },
-	sub { shift->basic_check_or_warning( 'Text::CSV', 'Text::CSV_XS' ) },
-	sub { shift->basic_check_or_warning( 'Type::Params', 'Class::XSAccessor' ) },
-	sub { shift->basic_check_or_warning( 'Type::Tiny' ) },
 	sub {
 		my $class = shift;
 		return true if !$INC{'Mouse/Util.pm'};
 		Mouse::Util::MOUSE_XS()
 			or warn "Mouse is installed without its XS backend.\n";
 	},
+	sub { shift->basic_check_or_warning( 'Object::Accessor' ) },
+	sub { shift->basic_check_or_warning( 'Object::Adhoc', 'Class::XSAccessor' ) },
+	sub { shift->basic_check_or_warning( 'Package::Stash' ) },
+	sub { shift->basic_check_or_warning( 'Params::Validate' ) },
+	sub { shift->basic_check_or_warning( 'PerlX::ArraySkip' ) },
+	sub { shift->basic_check_or_warning( 'PerlX::Maybe' ) },
+	sub { shift->basic_check_or_warning( 'PPI' ) },
+	sub { shift->basic_check_or_warning( 'Readonly' ) },
+	sub { shift->basic_check_or_warning( 'Ref::Util' ) },
+	sub { shift->basic_check_or_warning( 'Set::Product' ) },
+	sub { shift->basic_check_or_warning( 'String::Numeric' ) },
+	sub { shift->basic_check_or_warning( 'Text::CSV', 'Text::CSV_XS' ) },
+	sub { shift->basic_check_or_warning( 'Time::Format', 'Time::Format_XS' ) },
+	sub { shift->basic_check_or_warning( 'Type::Params', 'Class::XSAccessor' ) },
+	sub { shift->basic_check_or_warning( 'Type::Tiny' ) },
+	sub { shift->basic_check_or_warning( 'URL::Encode' ) },
 );
 
 sub all_checks {
@@ -128,7 +136,7 @@ L<https://github.com/tobyink/p5-missing-xs/issues>.
 
 =head1 SEE ALSO
 
-?
+L<Acme::CPANModules::XSVersions>: I stole some data from here.
 
 =head1 AUTHOR
 
