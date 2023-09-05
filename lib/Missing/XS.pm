@@ -5,7 +5,7 @@ use warnings;
 package Missing::XS;
 
 our $AUTHORITY = 'cpan:TOBYINK';
-our $VERSION   = '0.001000';
+our $VERSION   = '0.001001';
 
 use constant { true => !!1, false => !!0 };
 
